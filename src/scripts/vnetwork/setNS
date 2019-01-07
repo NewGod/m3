@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ "s${2: -3:3}" != "sns0" ]]; then
+    ip link set $1 netns $2
+fi

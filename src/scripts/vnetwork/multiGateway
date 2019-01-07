@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# see https://github.com/multipath-tcp/mptcp-scripts/blob/master/scripts/rt_table/mptcp_up
+
+if [ `grep $1 /etc/iproute2/rt_tables | wc -l` -eq 0 ]; then
+	NUM=`cat /etc/iproute2/rt_tables | wc -l`
+	echo "$NUM  $1" >> /etc/iproute2/rt_tables
+fi
+
+ip route add table $1 to ${3%.*}.0/24 dev $1 scope link
+ip route add table $1 $2 via $4 dev $1
+#ip route add table $1 $2 dev $1
+ip rule add from $3 table $1

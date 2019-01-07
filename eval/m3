@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Use 4.15 kernel. ADD "pti=off" TO GRUB COMMAND LINE! 
+
+killProg() {
+	local progs=`ps -ef | grep "$1" | grep -v "grep" | awk '{print $2}'`
+    if [ "s$progs" != "s" ]; then
+        kill -2 $progs
+    fi
+}
+
+pos=$(dirname $(readlink "$0" -f))
+cd $pos
+
+./init
+
+# Initialize result directory
+dir="$pos/../temp/m3-`date +%y%m%d-%H%M%S`"
+mkdir -p "$dir"
+# Proxy
+cd ../bin
+ip netns exec ns4 ./m3-proxyapp -f ../config/Proxy3Local.json 2> "$dir/proxy.log" &
+# Relay
+sleep 5
+ip netns exec ns2 ./m3-mobilerelayapp -f ../config/MobileRelay3Local.json 2> "$dir/relay.log" &
+# Client
+sleep 5
+ip netns exec ns1 mperf-client -c 10.100.4.1 -p 23333 -t 100 -V2
+killProg "m3-"
+

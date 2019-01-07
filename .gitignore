@@ -1,0 +1,15 @@
+*.exe
+*.o
+*.dep
+m3-*
+bin/*
+test/*
+temp/*
+
+# generated code
+src/Reflect.cc
+src/bpf_*
+src/bpf_*
+
+# database
+dataset/*

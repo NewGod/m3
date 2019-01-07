@@ -1,0 +1,3 @@
+#!/bin/bash
+ethtool --offload $1 tx off rx off
+ethtool -K $1 gso off

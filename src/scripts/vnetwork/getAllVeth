@@ -1,0 +1,7 @@
+ip link show type veth | egrep -v '^\s' | while read i
+do 
+    i=${i#*: } 
+    i=${i%%:*} 
+    i=${i%%@*} 
+    echo $i 
+done

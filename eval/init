@@ -1,0 +1,14 @@
+#!/bin/bash
+# Rooted, pwd = .
+
+pos=$(dirname $(readlink "$0" -f))
+cd $pos
+
+if ip netns | grep -q ns1; then
+    echo "Already done, bypass."
+    exit
+else
+    cd ../src/scripts/vnetwork
+    ./makeVirtualNetwork.sh 10.100.1 10.100.2 10.100.3 10.100.4 ?
+    ./redundant.sh 2 3 2 10.1 ?
+fi

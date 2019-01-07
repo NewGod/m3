@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ip rule del table $1
+ip route flush table $1

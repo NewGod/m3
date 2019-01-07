@@ -1,0 +1,13 @@
+#!/bin/bash
+
+execNS() {
+    ip netns exec $*
+}
+
+./addVethPair $2 $3
+./setNS $3 $1
+
+./giveAddr $2 $4.1/24
+execNS $1 ./giveAddr $3 $4.2/24
+./setRoute $4.0/24 $2
+execNS $1 ./setRoute $4.0/24 $3

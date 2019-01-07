@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ip link add $1 type veth peer name $2
