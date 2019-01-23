@@ -31,6 +31,8 @@ public:
         }
         while ((ptr = ptr + 1 == len ? 0 : ptr + 1) != prev);
 
+		//logMessage("Sending on interface %s", dest[0]->name);
+
         policy->readRelease();
 
         iferr (res == 0)

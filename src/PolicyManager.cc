@@ -2,6 +2,9 @@
 #include "Represent.h"
 #include "PolicyManager.hh"
 #include "RRScheduler.hh"
+#include "LowRTTScheduler.hh"
+#include "HighThroughputScheduler.hh"
+#include "FinalScheduler.hh"
 
 namespace m3
 {
@@ -9,8 +12,29 @@ namespace m3
 int PolicyManager::assignDefaultPolicy(Connection *conn, Policy::Priority prio)
 {
     Policy *policy = conn->getPolicy();
-    Scheduler *sched;
-    sched = snew RRScheduler();
+	Scheduler *sched = NULL;
+
+	/*switch (prio)
+	{
+	case m3::Policy::REALTIME:
+		sched = snew RRScheduler();
+		break;
+	case m3::Policy::HIGH:
+		sched = snew LowRTTScheduler();
+		break;
+	case m3::Policy::MEDIUM:
+		sched = snew HighThroughputScheduler();
+		break;
+	case m3::Policy::LOW:
+		sched = snew FinalScheduler();
+		break;
+	case m3::Policy::count:
+		break;
+	default:
+		break;
+	}*/
+    sched = snew FinalScheduler();
+
     TCPCallback *onACK = &DumbTCPCallback::instance;
     TCPCallback *onRetx = &DumbTCPCallback::instance;
     int ret;
