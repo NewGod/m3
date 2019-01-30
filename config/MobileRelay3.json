@@ -1,0 +1,39 @@
+{
+    "fieldClassName": "MobileRelayConfig",
+    "m3-sourceDevice": "h1-eth4",
+    "m3-sourceIP": "192.168.1.1",
+    "m3-myDevice": "relayveth",
+    "m3-myIP": "192.168.100.3",
+    "m3-subnet": "192.168.1",
+    "m3-fwmark": 233,
+    "m3-dbName": "/home/m3/m3/dataset/dataBase.hdf5",
+    "m3-dbInterfaceCount": 3,
+    "m3-gpsName": "/home/m3/m3/dataset/gps-neat",
+    "m3-flowAddrPairs": 
+    [
+        {
+            "fieldClassName": "FlowAddressPairConfig",
+            "device": "h1-eth1",
+            "src": "192.168.2.100",
+            "srcp": 0,
+            "dst": "192.168.2.1",
+            "dstp": 23333
+        },
+        {
+            "fieldClassName": "FlowAddressPairConfig",
+            "device": "h1-eth2",
+            "src": "192.168.3.100",
+            "srcp": 0,
+            "dst": "192.168.3.1",
+            "dstp": 23334
+        },
+        {
+            "fieldClassName": "FlowAddressPairConfig",
+            "device": "h1-eth3",
+            "src": "192.168.4.100",
+            "srcp": 0,
+            "dst": "192.168.4.1",
+            "dstp": 23335
+        }
+    ]
+}

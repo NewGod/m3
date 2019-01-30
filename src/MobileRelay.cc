@@ -19,6 +19,8 @@
 #include "PolicyManager.hh"
 #include "Represent.h"
 #include "RRConnectionSetHandler.hh"
+#include "ThresholdConnectionSetHandler.hh"
+#include "GreedyConnectionSetHandler.hh"
 #include "DatabaseProvider.hh"
 
 namespace m3
@@ -213,7 +215,7 @@ int MobileRelay::init(void *arg)
     cmInit.connMetaType = "ConnectionMetadataBase";
     for (int i = 0; i < Policy::Priority::count; ++i)
     {
-        if ((cmInit.handlers[i] = snew RRConnectionSetHandler()) == 0)
+        if ((cmInit.handlers[i] = snew ThresholdConnectionSetHandler()) == 0)
         {
             logAllocError("MobileRelay::init");
             return 6;

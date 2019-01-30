@@ -1,0 +1,34 @@
+{
+    "fieldClassName": "ProxyConfig",
+    "m3-sourceDevice": "h2-eth4",
+    "m3-sourceIP": "192.168.6.1",
+    "m3-myDevice": "proxyveth",
+    "m3-myIP": "192.168.100.3",
+    "m3-portBase": 40000,
+    "m3-portLen": 24576,
+    "m3-fwmark": 234,
+    "m3-dbName": "/home/m3/m3/dataset/dataBase.hdf5",
+    "m3-dbInterfaceCount": 3,
+    "m3-ListenAddress": 
+    [
+        {
+            "fieldClassName": "ListenAddressConfig",
+            "device": "h2-eth1",
+            "src": "192.168.2.1",
+            "srcp": 23333
+        },
+        {
+            "fieldClassName": "ListenAddressConfig",
+            "device": "h2-eth2",
+            "src": "192.168.3.1",
+            "srcp": 23334
+        },
+        {
+            "fieldClassName": "ListenAddressConfig",
+            "device": "h2-eth3",
+            "src": "192.168.4.1",
+            "srcp": 23335
+        }
+    ]
+
+}

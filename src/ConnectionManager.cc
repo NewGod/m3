@@ -96,8 +96,7 @@ int ConnectionManager::addConnection(Connection* conn)
 int ConnectionManager::insertConnection(
     DataMessageHeader *dh, Connection **dest)
 {
-    Connection *conn = snew Connection(dh, (ConnectionMetadataBase*)
-        metaFactory());
+    Connection *conn = snew Connection(dh);
     int ret;
 
     iferr (conn == 0)

@@ -84,11 +84,13 @@ public:
     timespec startTime;
     Session *session;
 
+	double prev_sch_time;
     // Protected value, acquire lock before reading
     unsigned long bytesSent;
     unsigned long bytesReceived;
     unsigned long pakSent;
     unsigned long pakReceived;
+
 
     ConnectionMetadataValue(): timeValid(false), startTime({0, 0}), 
         session(0), bytesSent(0), bytesReceived(0), pakSent(0), 
